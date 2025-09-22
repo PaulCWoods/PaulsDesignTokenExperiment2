@@ -1,0 +1,84 @@
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage' as *;
+
+/*------------------------------------*\
+#SIDEBAR LAYOUT
+\*------------------------------------*/
+
+/**
+ * Sidebar layout
+ */
+.ds-c-sidebar-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: size(4);
+
+  @media all and (min-width: $ds-bp-lg) {
+    flex-direction: row;
+  }
+}
+
+/**
+ * Sidebar layout gap none
+ */
+.ds-c-sidebar-layout--gap-none {
+  gap: 0;
+}
+
+/**
+ * Sidebar layout break xxl
+ */
+.ds-c-sidebar-layout--break-xxl {
+  @media all and (min-width: $ds-bp-lg) {
+    flex-direction: column;
+  }
+
+  @media all and (min-width: $ds-bp-xxl) {
+    flex-direction: row;
+  }
+}
+
+/**
+ * Sidebar layout section first
+ */
+.ds-c-sidebar-layout__section:nth-child(1) {
+  .ds-c-sidebar-layout--reversed & {
+    @media all and (min-width: $ds-bp-lg) {
+      order: 1;
+      width: 50%;
+    }
+  }
+
+  .ds-c-sidebar-layout--reversed.ds-c-sidebar-layout--break-xxl & {
+    @media all and (min-width: $ds-bp-lg) {
+      order: unset;
+      width: 100%;
+    }
+    @media all and (min-width: $ds-bp-xxl) {
+      order: 1;
+      width: 50%;
+    }
+  }
+}
+
+/**
+ * Sidebar layout section second
+ */
+.ds-c-sidebar-layout__section:nth-child(2) {
+  @media all and (min-width: $ds-bp-lg) {
+    flex: 1;
+  }
+
+  /**
+   * Sidebar layout section second break xxl
+   */
+  .ds-c-sidebar-layout--break-xxl & {
+    @media all and (min-width: $ds-bp-lg) {
+      flex: unset;
+    }
+    @media all and (min-width: $ds-bp-xxl) {
+      flex: 1;
+    }
+  }
+}

@@ -1,0 +1,318 @@
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+
+/*------------------------------------*\
+#COURSE CHECKOUT
+\*------------------------------------*/
+
+/**
+ * 1) E-commerce checkout page for visualizing token application
+ */
+.course-checkout {
+  display: flex;
+  flex-direction: column;
+
+  @media all and (min-width: $ds-bp-lg) {
+    background: linear-gradient(to right, var(--ds-theme-color-background-default) 50%, var(--ds-theme-color-background-brand) 50%);
+  }
+}
+
+/**
+ * Course checkout header
+ */
+.course-checkout__header {
+  margin-block-end: 0;
+
+  @media all and (min-width: $ds-bp-lg) {
+    margin-block-end: size(4);
+  }
+}
+
+/**
+ * Main page content section
+ */
+main {
+  flex: 1;
+  padding-block-end: size(24);
+}
+
+/**
+ * Course checkout customer info section
+ */
+.course-checkout__customer-info {
+  margin-block-start: size(4);
+
+  /**
+  * Expanded Course checkout customer info
+  */
+  .course-checkout.is-open & {
+    margin-block-start: 0;
+  }
+
+  @media all and (min-width: $ds-bp-lg) {
+    margin-block-start: 0;
+  }
+}
+
+/**
+ * Order summary
+ */
+.order-summary {
+  display: flex;
+  align-items: center;
+  gap: size(2);
+  padding: size(1) size(2);
+  background: var(--ds-theme-color-background-brand-knockout);
+  color: var(--ds-theme-color-content-knockout);
+  cursor: pointer;
+
+  @media all and (min-width: $ds-bp-lg) {
+    display: none;
+  }
+}
+
+/**
+ * Order summary icon
+ */
+.order-summary__icon {
+  fill: currentColor;
+  transition: transform var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+
+  /**
+   * Order summary icon within expanded course checkout page
+   */
+  .course-checkout.is-open & {
+    transform: rotate(-180deg);
+  }
+}
+
+/**
+ * Order summary text
+ */
+.order-summary__text {
+  @include ds-theme-typography-body-sm;
+}
+
+/**
+ * Order summary total
+ */
+.order-summary__total {
+  margin-inline-start: auto;
+}
+
+/**
+ * Order details section
+ */
+.order-details-section {
+  display: none;
+  background: var(--ds-theme-color-background-brand);
+  margin-inline-start: size(-2);
+  margin-inline-end: size(-2);
+
+  /**
+   * Order details section within expanded course checkout page
+   */
+  .course-checkout.is-open & {
+    display: block;
+    padding: size(2);
+  }
+
+  @media all and (min-width: $ds-bp-lg) {
+    display: block;
+    position: sticky;
+    inset-block-start: size(4);
+    height: 100%;
+    margin: 0;
+    padding: 0 0 0 size(6);
+    background: none;
+  }
+}
+
+/**
+ * Payment platform button
+ */
+.payment-platform-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: size(1);
+  padding: size(1) size(2);
+  background: #000000;
+  border: 1px solid #000000;
+  border-radius: size(0.25);
+  text-align: center;
+  cursor: pointer;
+  transition: background var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: #545454;
+    border-color: #545454;
+  }
+
+  &:disabled {
+    background: #808080;
+    border-color: #808080;
+  }
+
+  &:focus-visible {
+    @include focus();
+  }
+}
+
+/**
+ * Payment platform button icon
+ */
+.payment-platform-button__icon {
+  display: block;
+  width: size(6);
+}
+
+/**
+ * Promo code
+ */
+.promo-code {
+  display: flex;
+  gap: size(1);
+}
+
+/**
+ * Promo code text field
+ */
+.promo-code__text-field {
+  display: block;
+  flex: 1;
+}
+
+/**
+ * Subtotal section
+ */
+.subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/**
+ * Subtotal text
+ */
+.subtotal__text {
+  @include ds-theme-typography-title-sm;
+}
+
+/**
+ * Subtotal total
+ */
+.subtotal__total {
+  @include ds-theme-typography-title-sm;
+}
+
+/**
+ * Product media block list
+ */
+.product-media-block-list {
+  display: flex;
+  flex-direction: column;
+  gap: size(2);
+}
+
+/**
+ * Product media block list gap sm
+ */
+.product-media-block-list--gap-sm {
+  gap: size(1);
+}
+
+/**
+ * Button group
+ */
+.button-group {
+  display: flex;
+  gap: size(1);
+  flex-wrap: wrap;
+  width: 100%;
+
+  > * {
+    flex: 1;
+  }
+}
+
+/**
+ * Course checkout fieldset
+ */
+.course-checkout__fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: size(3);
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/**
+ * First last name
+ */
+.first-last-name {
+  display: grid;
+  gap: size(2);
+  grid-template-columns: 1fr 1fr;
+
+  @media all and (min-width: $ds-bp-lg) {
+    gap: size(2);
+  }
+}
+
+/**
+ * Expiration security code
+ */
+.expiration-security-code {
+  display: grid;
+  gap: size(2);
+  grid-template-columns: 1fr 1fr;
+}
+
+/**
+ * City state zip
+ */
+.city-state-zip {
+  display: grid;
+  gap: size(3);
+
+  @media all and (min-width: $ds-bp-lg) {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: size(2);
+  }
+}
+
+/**
+ * Course checkout submit button
+ */
+.course-checkout__submit {
+  display: block;
+  margin-block-start: size(3);
+}
+
+/**
+ * Divider
+ */
+.divider {
+  position: relative;
+  @include ds-theme-typography-body-sm;
+  border-block-end: 1px solid var(--ds-theme-color-border-subtle);
+  text-align: center;
+  margin: size(4) 0;
+}
+
+/**
+ * Divider text
+ */
+.divider__text {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--ds-theme-color-background-default);
+  color: var(--ds-theme-color-content-subtle);
+  padding: 0 size(2);
+}

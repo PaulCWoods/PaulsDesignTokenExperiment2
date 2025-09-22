@@ -1,0 +1,178 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+/*------------------------------------*\
+#CHART
+\*------------------------------------*/
+
+/**
+* 1) A chart component is a visual representation of data using lines, bars, or other graphical elements.
+*/
+.ds-c-chart {
+  display: flex;
+  gap: size(2);
+  position: relative;
+  width: 100%;
+}
+
+/**
+* Chart lines
+*/
+.ds-c-chart__lines {
+  stroke: var(--ds-theme-color-border-subtle);
+}
+
+/**
+* Chart stroke
+*/
+.ds-c-chart__stroke {
+  stroke: var(--ds-theme-color-background-dataviz-primary);
+}
+
+/**
+* Chart background
+*/
+.ds-c-chart__background {
+  fill: var(--ds-theme-color-background-dataviz-primary-subtle);
+}
+
+/**
+* Chart label
+*/
+.ds-c-chart__label {
+  @include ds-theme-typography-body-sm;
+  fill: var(--ds-theme-color-content-subtle);
+}
+
+/**
+* Chart text
+*/
+.ds-c-chart__text {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: size(0.5);
+  text-align: center;
+}
+
+/**
+* Chart image
+*/
+.ds-c-chart__image {
+  width: 100%;
+}
+
+/**
+* Chart text value
+*/
+.ds-c-chart__text-value {
+  @include ds-theme-typography-title-lg;
+
+  /**
+  * Chart text value within small chart
+  */
+  .ds-c-chart--sm & {
+    @include ds-theme-typography-title-default;
+  }
+}
+
+/**
+* Chart text label
+*/
+.ds-c-chart__text-label {
+  @include ds-theme-typography-label-lg;
+
+  /**
+  * Chart text label within small chart
+  */
+  .ds-c-chart--sm & {
+    @include ds-theme-typography-label-sm;
+  }
+}
+
+/**
+* Chart meta
+*/
+.ds-c-chart__meta {
+  @include ds-theme-typography-body-lg;
+  & {
+    color: var(--ds-theme-color-content-subtle);
+  }
+
+  /**
+  * Chart meta within small chart
+  */
+  .ds-c-chart--sm & {
+    @include ds-theme-typography-body-sm;
+  }
+}
+
+/**
+* Chart key
+*/
+.ds-c-chart__key {
+  display: flex;
+  flex-direction: column;
+  gap: size(0.5);
+}
+
+/**
+* Chart key item
+*/
+.ds-c-chart__key-item {
+  display: flex;
+  align-items: center;
+  gap: size(0.5);
+}
+
+/**
+* Chart key item color
+*/
+.ds-c-chart__key-item-color {
+  width: size(3);
+  height: size(1);
+}
+
+/**
+* USA background
+*/
+.usa {
+  fill: var(--ds-theme-color-background-dataviz-secondary);
+}
+
+/**
+* USA background
+*/
+.usa-background {
+  background-color: var(--ds-theme-color-background-dataviz-secondary);
+}
+
+/**
+* Canada
+*/
+.canada {
+  fill: var(--ds-theme-color-background-dataviz-tertiary);
+}
+
+/**
+* Canada background
+*/
+.canada-background {
+  background-color: var(--ds-theme-color-background-dataviz-tertiary);
+}
+
+/**
+* Mexico chart fill
+*/
+.mexico {
+  fill: var(--ds-theme-color-background-dataviz-primary);
+}
+
+/**
+* Mexico background
+*/
+.mexico-background {
+  background-color: var(--ds-theme-color-background-dataviz-primary);
+}

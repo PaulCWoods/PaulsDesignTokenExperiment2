@@ -1,0 +1,55 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+
+/*------------------------------------*\
+#GRID
+\*------------------------------------*/
+
+/**
+* 1) Grid container that contains grid item to create common grid layouts
+*/
+.ds-c-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: size(2);
+}
+
+/**
+* Grid gap small
+*/
+.ds-c-grid--gap-sm {
+  gap: size(1);
+}
+
+/**
+* Grid 3 up layout
+*/
+.ds-c-grid--3up {
+  @media all and (min-width: $ds-bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media all and (min-width: $ds-bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/**
+* Grid 1-2-4 up layout
+*/
+.ds-c-grid--1-2-4up {
+  @media all and (min-width: $ds-bp-sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media all and (min-width: $ds-bp-lg) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+/**
+* Grid item
+*/
+.ds-c-grid__item {
+  height: 100%;
+}

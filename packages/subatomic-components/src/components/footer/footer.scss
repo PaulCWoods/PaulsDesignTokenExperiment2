@@ -1,0 +1,130 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+
+/*------------------------------------*\
+#FOOTER
+\*------------------------------------*/
+
+/**
+* 1) Global footer container that can include newsletter form and navigation
+*/
+.ds-c-footer {
+  background: var(--ds-theme-color-background-knockout);
+  color: var(--ds-theme-color-content-brand-knockout);
+  padding-block-start: size(4);
+  padding-block-end: size(4);
+
+  @media all and (min-width: $ds-bp-md) {
+    padding-block-start: size(8);
+    padding-block-end: size(8);
+  }
+
+  @media all and (min-width: $ds-bp-lg) {
+    padding-block-start: size(10);
+    padding-block-end: size(10);
+  }
+}
+
+/**
+* 1) Inner container that includes footer content
+*/
+.ds-c-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: size(4);
+
+  @media all and (min-width: $ds-bp-lg) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/**
+* 1) Left column of footer content
+*/
+.ds-c-footer__left {
+  @media all and (min-width: $ds-bp-lg) {
+    max-width: 50%;
+  }
+}
+
+/**
+* 1) Right column of footer content
+*/
+.ds-c-footer__right {
+  @media all and (min-width: $ds-bp-lg) {
+    margin-inline-start: auto;
+  }
+}
+
+/**
+* 1) Newsletter form
+*/
+.ds-c-footer__newsletter {
+  display: flex;
+  gap: size(1);
+}
+
+/**
+* 1) Newsletter text field
+*/
+.ds-c-footer__text-field {
+  display: block;
+  width: 100%;
+  max-width: 20rem;
+}
+
+/**
+* 1) Newsletter heading
+*/
+.ds-c-footer__heading {
+  @include ds-theme-typography-title-default;
+}
+
+/**
+* Footer navigation heading
+*/
+.ds-c-footer__nav-heading {
+  @include ds-theme-typography-title-sm;
+  margin-block-end: size(2);
+}
+
+/**
+* Footer navigation
+*/
+.ds-c-footer__nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: size(4);
+  width: fit-content;
+}
+
+/**
+* Footer navigation list
+*/
+.ds-c-footer__nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: size(1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/**
+* Footer navigation link
+*/
+.ds-c-footer__nav-link {
+  @include ds-theme-typography-body-sm;
+  text-decoration: none;
+  color: var(--ds-theme-color-content-brand-knockout);
+  transition: color var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+
+  &:hover {
+    color: var(--ds-theme-color-content-subtle);
+  }
+
+  &:focus-visible {
+    @include focusInverted();
+  }
+}

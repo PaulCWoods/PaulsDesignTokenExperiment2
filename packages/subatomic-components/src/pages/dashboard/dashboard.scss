@@ -1,0 +1,221 @@
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+
+/*------------------------------------*\
+#COURSE DASHBOARD
+\*------------------------------------*/
+
+/**
+ * Enterprise dashboard page for demonstrating token application
+ */
+.course-dashboard {
+  display: flex;
+  flex-direction: column;
+  background: var(--ds-theme-color-background-subtle);
+}
+
+/**
+ * Main content area
+ */
+main {
+  flex: 1;
+}
+
+/**
+ * Course dashboard sidebar
+ */
+.course-dashboard__sidebar {
+  position: absolute;
+  inset-block-start: size(6);
+  inset-inline-start: 0;
+  height: 100%;
+  visibility: hidden;
+  width: 0;
+  overflow: hidden;
+  border-block-start: var(--ds-theme-border-width-sm) solid var(--ds-theme-color-border-brand);
+  background: var(--ds-theme-color-background-brand-knockout);
+  flex: 1;
+  transition: width var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+  z-index: var(--ds-z-index-top);
+
+  @media all and (min-width: $ds-bp-lg) {
+    padding: size(2);
+  }
+
+  @media all and (min-width: $ds-bp-xxl) {
+    position: sticky;
+    inset-block-start: 0;
+    height: 100vh;
+    visibility: visible;
+    overflow: auto;
+    min-width: size(40);
+    max-width: size(40);
+  }
+}
+
+/**
+ * Active course dashboard sidebar
+ */
+.course-dashboard__sidebar.ds-is-active {
+  visibility: visible;
+  overflow: auto;
+  width: 100%;
+
+  @media all and (min-width: $ds-bp-lg) {
+    width: size(40);
+  }
+}
+
+/**
+ * Course dashboard main
+ */
+.course-dashboard__main {
+  padding-block-start: size(4);
+
+  @media all and (min-width: $ds-bp-xl) {
+    padding-inline-start: size(4);
+    padding-inline-end: size(4);
+  }
+}
+
+/**
+ * Side navigation list
+ */
+.side-navigation__list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @media all and (min-width: $ds-bp-lg) {
+    gap: size(1);
+  }
+}
+
+/**
+ * Side navigation item
+ */
+.side-navigation__item {
+  border-block-end: var(--ds-theme-border-width-sm) solid var(--ds-theme-color-border-default);
+
+  @media all and (min-width: $ds-bp-lg) {
+    border-block-end: none;
+  }
+}
+
+/**
+ * Side navigation link
+ */
+.side-navigation__link {
+  @include ds-theme-typography-label-sm;
+  display: block;
+  padding: size(2);
+  opacity: 0;
+  visibility: hidden;
+  color: var(--ds-theme-color-content-knockout);
+  border-radius: var(--ds-theme-border-radius-sm);
+  background: transparent;
+  text-decoration: none;
+  transition:
+    opacity 0s var(--ds-theme-animation-ease),
+    visibility 0 var(--ds-theme-animation-ease),
+    color 0s var(--ds-theme-animation-ease),
+    background var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+
+  &:hover,
+  &:focus {
+    background: var(--ds-theme-color-background-brand-knockout-hover);
+  }
+
+  &:focus-visible {
+    @include focusInverted();
+  }
+
+  /**
+   * Side navigation item that represents the current page
+   */
+  .side-navigation__item.is-current & {
+    color: var(--ds-theme-color-content-brand-knockout);
+  }
+
+  /**
+   * Side navigation item that is open on smaller screens
+   */
+  .course-dashboard__sidebar.ds-is-active & {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease) var(--ds-theme-animation-fade-quick),
+      visibility var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease) var(--ds-theme-animation-fade-quick);
+  }
+
+  @media all and (min-width: $ds-bp-lg) {
+    padding: size(1) size(2);
+  }
+
+  @media all and (min-width: $ds-bp-xxl) {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/**
+ * Course dashboard by the numbers
+ */
+.course-dashboard-by-the-numbers {
+  margin-block-end: size(1.5);
+}
+
+/**
+ * Course dashboard by the numbers heading
+ */
+.course-dashboard-by-the-numbers__heading {
+  @include ds-theme-typography-title-sm;
+  margin-block-end: size(2);
+}
+
+/**
+ * Course dashboard by the numbers item
+ */
+.course-dashboard-by-the-numbers__item {
+  padding: size(1);
+  border-radius: var(--ds-theme-border-radius-md);
+  background: var(--ds-theme-color-background-subtle);
+  text-align: center;
+}
+
+/**
+ * Course dashboard by the numbers item value
+ */
+.course-dashboard-by-the-numbers__item-value {
+  @include ds-theme-typography-title-lg;
+}
+
+/**
+ * Course dashboard by the numbers item label
+ */
+.course-dashboard-by-the-numbers__item-label {
+  @include ds-theme-typography-body-sm;
+}
+
+/**
+ * Status text
+ */
+.status-text {
+  @include ds-theme-typography-label-sm;
+}
+
+/**
+ * Success status text
+ */
+.success {
+  color: var(--ds-theme-color-content-utility-success);
+}
+
+/**
+ * Warning status text
+ */
+.warning {
+  color: var(--ds-theme-color-content-utility-warning);
+}

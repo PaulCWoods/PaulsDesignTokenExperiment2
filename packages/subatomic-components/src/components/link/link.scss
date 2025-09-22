@@ -1,0 +1,54 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+
+/*------------------------------------*\
+  #ALERT
+\*------------------------------------*/
+
+/**
+ * 1) Link component
+ */
+.ds-c-link {
+  color: var(--ds-theme-link-color-content-default);
+
+  &:hover,
+  &:focus {
+    color: var(--ds-theme-link-color-content-hover);
+  }
+
+  &:active {
+    color: var(--ds-theme-link-color-contentactive);
+  }
+
+  &:visited {
+    color: var(--ds-theme-link-color-content-visited);
+  }
+
+  &:focus-visible {
+    @include focus;
+  }
+}
+
+/**
+ * 2) Knockout variant of the link
+ */
+.ds-c-link--knockout {
+  color: var(--ds-theme-link-knockout-color-content-default);
+
+  &:hover,
+  &:focus {
+    color: var(--ds-theme-link-knockout-color-content-hover);
+  }
+
+  &:active {
+    color: var(--ds-theme-link-knockout-color-contentactive);
+  }
+
+  &:visited {
+    color: var(--ds-theme-link-knockout-color-content-visited);
+  }
+
+  &:focus-visible {
+    @include focusInverted;
+  }
+}

@@ -1,0 +1,138 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+
+*,
+::slotted(*),
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/**
+ * Token specimen component styles
+ */
+.token-specimen {
+  border: 1px solid var(--ds-theme-color-border-subtle);
+  box-shadow: 1px solid var(--ds-theme-box-shadow-md);
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+
+  @media all and (min-width: 20rem) {
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+/**
+ * Stacked token specimen styles
+ */
+.token-specimen--stacked {
+  @media all and (min-width: 20rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/**
+ * Stacked token specimen info
+ */
+.token-specimen__info {
+  @include ds-theme-typography-body-sm;
+}
+
+/**
+ * Token specimen name
+ */
+.token-specimen__name {
+  display: inline-block;
+  background: rgb(242, 242, 242);
+  color: rgb(235, 87, 87);
+  padding: 0.2rem;
+  border-radius: 4px;
+}
+
+/**
+ * Token specimen value
+ */
+.token-specimen__value {
+  display: block;
+}
+
+/**
+ * Token specimen comment
+ */
+.token-specimen__comment {
+  margin: 0;
+}
+
+/**
+ * Token specimen empty state
+ */
+.token-specimen:empty {
+  display: none;
+}
+
+/**
+ * Token specimen body
+ */
+.token-specimen__body {
+  width: 100%;
+
+  /**
+   * Token specimen body within inverted token specimen
+   */
+  .token-specimen--inverted & {
+    background: var(--ds-theme-color-background-knockout) !important;
+    outline: 6px solid var(--ds-theme-color-border-strong);
+    padding: 1.5rem 1rem;
+    width: 100%;
+  }
+}
+
+/**
+ * Token specimen sample box
+ */
+.token-specimen__sample--box {
+  background: var(--ds-theme-color-background-brand-knockout);
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/**
+ * Token specimen sample typography title
+ */
+.token-specimen__sample--typography-title {
+  font-size: 3rem;
+}
+
+/**
+ * Token specimen sample typography body
+ */
+.token-specimen__sample--typography-body {
+  font-size: 1rem;
+}
+
+/**
+ * Token specimen sample animation fade
+ */
+.token-specimen__sample--animation-fade {
+  transition: all 0.15s ease;
+
+  &:hover,
+  &:focus {
+    opacity: 0.2;
+  }
+}
+
+/**
+ * Token specimen sample animation move
+ */
+.token-specimen__sample--animation-move {
+  transition: all 0.15s ease;
+
+  &:hover,
+  &:focus {
+    transform: translateX(-3rem);
+  }
+}

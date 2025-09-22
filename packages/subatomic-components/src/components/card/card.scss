@@ -1,0 +1,36 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+/*------------------------------------*\
+#CARD
+\*------------------------------------*/
+
+/**
+* 1) Flexible container that groups related content and actions.
+*/
+.ds-c-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: var(--ds-theme-box-shadow-sm);
+  border-radius: var(--ds-theme-border-radius-md);
+  background: var(--ds-theme-color-background-default);
+  padding: size(2);
+}
+
+/**
+* Card heading
+*/
+.ds-c-card__heading {
+  @include ds-theme-typography-label-sm;
+  margin-block-end: size(2);
+}
+
+/**
+* Card body
+* 1) Set to flex: 1 to ensure the card body takes up the remaining space.
+*/
+.ds-c-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* 1 */
+}

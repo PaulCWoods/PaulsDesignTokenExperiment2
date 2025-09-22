@@ -1,0 +1,21 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+/*------------------------------------*\
+#FPO
+\*------------------------------------*/
+
+.fpo {
+  @include ds-theme-typography-body-default;
+  & {
+    background: lightblue;
+    border: 2px dashed darkblue;
+    border-radius: 0.5rem;
+    color: darkblue;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-block-end: 1rem;
+    font-weight: bold;
+    text-align: center;
+  }
+}

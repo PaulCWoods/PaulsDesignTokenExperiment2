@@ -1,0 +1,21 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+/*------------------------------------*\
+#LAYOUT-CONTAINER
+\*------------------------------------*/
+
+/**
+* 1) Container that helps to align content and cap the width of the content
+*/
+.ds-c-layout-container {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 size(2);
+}
+
+/**
+* Wide layout container
+*/
+.ds-c-layout-container--wide {
+  max-width: 80rem;
+}

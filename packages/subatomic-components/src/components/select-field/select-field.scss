@@ -1,0 +1,140 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+/*------------------------------------*\
+    #SELECT-FIELD
+\*------------------------------------*/
+
+/**
+ * 1) A form fied consisting of a label, select input, and field note
+ */
+
+/**
+* Select field label
+*/
+.ds-c-select-field__label {
+  @include ds-theme-typography-label-default;
+  display: block;
+  margin-block-end: size(1);
+
+  /**
+  * Select field label within error select field
+  */
+  .ds-c-select-field.ds-is-error & {
+    color: var(--ds-theme-color-content-utility-error);
+  }
+
+  /**
+  * Select field label within success select field
+  */
+  .ds-c-select-field.ds-is-success & {
+    color: var(--ds-theme-color-content-utility-success);
+  }
+}
+
+/**
+* Select field body
+* 1) Container around the input and icon to help place icon in the right spot
+*/
+.ds-c-select-field__body {
+  position: relative;
+}
+
+/**
+* Select field input
+*/
+.ds-c-select-field__input {
+  @include ds-theme-typography-body-default;
+  & {
+    appearance: none;
+    padding: 0.5rem 2rem 0.5rem 0.5rem;
+    background: var(--ds-theme-form-color-background-default);
+    border-radius: var(--ds-theme-border-radius-sm);
+    border: var(--ds-theme-border-width-sm) solid var(--ds-theme-form-color-border-default);
+    color: var(--ds-theme-color-content-default);
+    width: 100%;
+    transition: all var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease-in-out);
+  }
+
+  &:hover {
+    background: var(--ds-theme-form-color-background-hover);
+    border-color: var(--ds-theme-form-color-border-hover);
+  }
+
+  &:focus {
+    background: var(--ds-theme-form-color-background-focus);
+    border-color: var(--ds-theme-form-color-border-focus);
+  }
+
+  &:focus-visible {
+    @include focus();
+  }
+
+  .ds-c-select-field.ds-is-error & {
+    border-color: var(--ds-theme-color-border-utility-error);
+  }
+}
+
+/**
+* Remove native select icon
+*/
+select::-ms-expand {
+  display: none;
+}
+
+/**
+* Select input icon (custom)
+* 1) Place icon in the middle of the select input
+* 2) Remove icon pointer event from blocking the menu from opening
+*/
+.ds-c-select-field__icon {
+  position: absolute; /* 1 */
+  inset-block-start: 50%; /* 1 */
+  transform: translateY(-50%); /* 1 */
+  inset-inline-end: size(1.5);
+  fill: currentColor;
+  pointer-events: none;
+}
+
+/**
+* Select field optional text
+*/
+.ds-c-select-field__optional {
+  @include ds-theme-typography-body-default;
+  color: var(--ds-theme-color-content-subtle);
+}
+
+/**
+* Select field field note
+*/
+.ds-c-select-field__fieldnote {
+  @include ds-theme-typography-body-sm;
+  & {
+    margin-block-start: 0.5rem;
+    color: var(--ds-theme-color-content-subtle);
+  }
+
+  /**
+  * Select field field note within inverted select field
+  */
+  .ds-c-select-field--inverted & {
+    color: var(--ds-theme-color-content-knockout);
+  }
+
+  /**
+  * Select field field note within error select field
+  */
+  .ds-c-select-field.ds-is-error & {
+    display: flex;
+    gap: size(0.5);
+    color: var(--ds-theme-color-content-utility-error);
+  }
+}
+
+/**
+* Select field field note icon
+*/
+.ds-c-select-field__fieldnote-icon {
+  position: relative;
+  inset-block-start: size(0.25);
+  fill: currentColor;
+}

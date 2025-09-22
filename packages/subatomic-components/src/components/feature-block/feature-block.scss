@@ -1,0 +1,120 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+
+/*------------------------------------*\
+#FEATURE-BLOCK
+\*------------------------------------*/
+
+/**
+* 1) Large block container that includes media and body content
+*/
+.ds-c-feature-block {
+  background: var(--ds-theme-color-background-subtle);
+  color: var(--ds-theme-color-content-default);
+  padding-block-start: size(4);
+  padding-block-end: size(4);
+
+  @media all and (min-width: $ds-bp-md) {
+    padding-block-start: size(8);
+    padding-block-end: size(8);
+  }
+
+  @media all and (min-width: $ds-bp-lg) {
+    padding-block-start: size(10);
+    padding-block-end: size(10);
+  }
+}
+
+/**
+* Feature block inner container
+*/
+.ds-c-feature-block__inner {
+  display: flex;
+  flex-direction: column;
+  gap: size(3);
+
+  @media all and (min-width: $ds-bp-lg) {
+    flex-direction: row;
+  }
+}
+
+/**
+* Feature block media
+*/
+.ds-c-feature-block__media {
+  @media all and (min-width: $ds-bp-lg) {
+    width: 50%;
+  }
+}
+
+/**
+* Feature block image
+*/
+.ds-c-feature-block__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--ds-theme-border-radius-md);
+  box-shadow: var(--ds-theme-box-shadow-md);
+}
+
+/**
+* Feature block body
+*/
+.ds-c-feature-block__body {
+  @media all and (min-width: $ds-bp-lg) {
+    width: 50%;
+  }
+}
+
+/**
+* Feature block heading
+*/
+.ds-c-feature-block__heading {
+  @include ds-theme-typography-headline-lg;
+
+  & {
+    text-wrap: balance;
+    text-align: center;
+    color: var(--ds-theme-color-content-brand);
+  }
+}
+
+/**
+* Feature block list
+*/
+.ds-c-feature-block__list {
+  display: flex;
+  flex-direction: column;
+  gap: size(3);
+  list-style: none;
+  margin: size(4) 0 0 0;
+  padding: 0;
+}
+
+/**
+* Feature block item
+*/
+.ds-c-feature-block__item {
+  @include ds-theme-typography-body-lg;
+
+  & {
+    display: flex;
+    align-items: center;
+    gap: size(3);
+  }
+}
+
+/**
+* Feature block item image
+*/
+.ds-c-feature-block__item-image {
+  fill: currentColor;
+}
+
+/**
+* Feature block item content
+*/
+.ds-c-feature-block__item-content {
+  flex: 1;
+}

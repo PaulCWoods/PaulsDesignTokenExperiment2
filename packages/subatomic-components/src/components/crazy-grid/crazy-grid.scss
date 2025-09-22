@@ -1,0 +1,18 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+/*------------------------------------*\
+#CRAZY-GRID
+\*------------------------------------*/
+
+/**
+* Container that places items in various layouts
+*/
+.ds-c-crazy-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: size(2);
+
+  @media all and (min-width: $ds-bp-md) {
+    grid-template-columns: 2fr 1fr;
+  }
+}

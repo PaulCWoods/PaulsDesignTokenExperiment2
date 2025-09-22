@@ -1,0 +1,426 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+
+/*------------------------------------*\
+#HEADER
+\*------------------------------------*/
+
+/**
+* 1) Header container that can include logo, navigation, and utility navigation
+*/
+.ds-c-header {
+  position: relative;
+  padding: size(1.25) 0;
+  background: var(--ds-theme-color-background-default);
+  border-block-end: var(--ds-theme-border-width-sm) solid var(--ds-theme-color-border-subtle);
+  z-index: var(--ds-z-index-top);
+  width: 100%;
+}
+
+/**
+* Transparent header
+*/
+.ds-c-header--transparent {
+  background: transparent;
+  border-block-end: none;
+}
+
+/**
+* Absolute header
+*/
+.ds-c-header--absolute {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+}
+
+/**
+* Inverted header
+*/
+.ds-c-header--inverted {
+  background: var(--ds-theme-color-background-brand-knockout);
+  border-block-end: none;
+}
+
+/**
+* Menu only header
+*/
+.ds-c-header--menu-only {
+  padding-block-start: size(1);
+  padding-block-end: size(1);
+  @media all and (min-width: $ds-bp-lg) {
+    padding-inline-start: size(2);
+    padding-inline-end: size(2);
+  }
+}
+
+/**
+* Header spacing
+*/
+.ds-c-header__spacing {
+  padding-inline: size(2);
+}
+
+/**
+* Header inner container
+*/
+.ds-c-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/**
+* Header navigation container
+*/
+.ds-c-header__nav-container {
+  display: none;
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: var(--ds-z-index-top);
+
+  /**
+  * Navigation container within active header
+  */
+  .ds-c-header.ds-is-active & {
+    display: block;
+    background: var(--ds-theme-color-background-brand);
+
+    @media all and (min-width: $ds-bp-md) {
+      background: transparent;
+    }
+  }
+
+  /**
+  * Absolute header within active header
+  */
+  .ds-c-header--absolute.ds-is-active & {
+    inset-block-start: 0;
+    padding-block-start: size(9);
+    z-index: -1;
+
+    @media all and (min-width: $ds-bp-md) {
+      padding-block-start: 0;
+    }
+  }
+
+  @media all and (min-width: $ds-bp-md) {
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+  }
+}
+
+/**
+* Bottom inner container
+*/
+.ds-c-header__bottom-inner {
+  display: flex;
+  gap: size(4);
+}
+
+/**
+* Logo
+*/
+.ds-c-logo {
+  display: block;
+
+  &:focus-visible {
+    @include focus();
+  }
+
+  /**
+  * Logo within inverted header
+  */
+  .ds-c-header--inverted & {
+    &:focus-visible {
+      @include focusInverted();
+    }
+  }
+}
+
+/**
+* Logo image
+*/
+.ds-c-logo__image {
+  display: block;
+  position: relative;
+  height: fit-content;
+  fill: var(--ds-theme-color-content-brand);
+
+  /**
+  * Logo image within inverted header
+  */
+  .ds-c-header--inverted & {
+    fill: var(--ds-theme-color-content-knockout);
+  }
+}
+
+.ds-c-logo__circle {
+  fill: var(--ds-theme-color-background-subtle);
+
+  /**
+  * Logo circle within inverted header
+  */
+  .ds-c-header--inverted & {
+    fill: var(--ds-theme-color-background-brand-knockout);
+  }
+}
+
+/**
+* Primary navigation
+*/
+.ds-c-primary-nav {
+  width: 100%;
+  @media all and (min-width: $ds-bp-md) {
+    width: auto;
+    margin: 0 auto;
+  }
+}
+
+/**
+* Primary navigation list
+*/
+.ds-c-primary-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: size(2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @media all and (min-width: $ds-bp-md) {
+    flex-direction: row;
+  }
+}
+
+/**
+* Primary navigation item
+*/
+.ds-c-primary-nav__item {
+  border-block-end: var(--ds-theme-border-width-sm) solid var(--ds-theme-color-border-subtle);
+
+  @media all and (min-width: $ds-bp-md) {
+    width: auto;
+    border-block-end: none;
+  }
+}
+
+/**
+* Primary navigation link
+*/
+.ds-c-primary-nav__link {
+  @include ds-theme-typography-label-sm;
+  display: inline-flex;
+  width: 100%;
+  padding: size(2) 0;
+  gap: size(1);
+  text-decoration: none;
+  color: var(--ds-theme-color-content-default);
+  transition: color var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+
+  &:hover,
+  &:focus {
+    color: var(--ds-theme-color-content-subtle);
+  }
+
+  &:focus-visible {
+    @include focus();
+  }
+
+  /**
+  * Primary navigation link within inverted header
+  */
+  .ds-c-header--inverted & {
+    color: var(--ds-theme-color-content-knockout);
+
+    &:hover,
+    &:focus {
+      color: var(--ds-theme-color-content-subtle);
+    }
+  }
+
+  @media all and (min-width: $ds-bp-md) {
+    padding: 0;
+    width: auto;
+  }
+}
+
+/**
+* Primary navigation text
+*/
+.ds-c-primary-nav__text {
+  /**
+  * Primary navigation text within icon only item
+  */
+  .ds-c-primary-nav__item--icon-only & {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+}
+
+/**
+* Utility navigation
+*/
+.ds-c-utility-nav {
+  margin-inline-start: auto;
+
+  @media all and (min-width: $ds-bp-md) {
+    margin-inline-start: 0;
+  }
+}
+
+/**
+* Utility navigation list
+*/
+.ds-c-utility-nav__list {
+  display: flex;
+  align-items: center;
+  gap: size(2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+* Utility navigation link
+*/
+.ds-c-utility-nav__link {
+  @include ds-theme-typography-label-default;
+  display: flex;
+  gap: size(1);
+  text-decoration: none;
+  color: var(--ds-theme-color-content-brand);
+  transition: color var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+  &:hover,
+  &:focus {
+    color: var(--ds-theme-color-content-subtle);
+
+    &:focus-visible {
+      @include focus();
+    }
+  }
+
+  /**
+  * Utility navigation link within inverted header
+  */
+  .ds-c-header--inverted & {
+    color: var(--ds-theme-color-content-knockout);
+
+    &:hover,
+    &:focus {
+      color: var(--ds-theme-color-content-subtle);
+    }
+
+    &:focus-visible {
+      @include focusInverted();
+    }
+  }
+}
+
+/**
+* Utility navigation text
+*/
+.ds-c-utility-nav__text {
+  /**
+  * Utility navigation text within icon only item
+  */
+  .ds-c-utility-nav__item--icon-only & {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+}
+
+/**
+* Utility navigation icon
+*/
+.ds-c-utility-nav__icon {
+  display: block;
+  height: size(3);
+  width: size(3);
+  fill: var(--ds-theme-color-content-default);
+  transition: fill var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+
+  /**
+  * Utility navigation icon within inverted header
+  */
+  .ds-c-utility-nav__link:hover &,
+  .ds-c-utility-nav__link:focus & {
+    fill: var(--ds-theme-color-content-subtle);
+  }
+}
+
+/**
+* Menu button
+*/
+.ds-c-header__menu-button {
+  position: relative;
+  inset-block-start: size(0.125);
+
+  display: inline-flex;
+  background: none;
+  border: none;
+  color: var(--ds-theme-color-content-default);
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+
+  &:hover,
+  &:focus {
+    color: var(--ds-theme-color-content-subtle);
+  }
+
+  /**
+  * Menu button within inverted header
+  */
+  .ds-c-header--inverted & {
+    color: var(--ds-theme-color-content-knockout);
+
+    &:hover,
+    &:focus {
+      color: var(--ds-theme-color-content-subtle);
+    }
+  }
+
+  /**
+  * Menu button within menu only header
+  */
+  .ds-c-header--menu-only & {
+    @media all and (min-width: $ds-bp-md) {
+      display: inline-flex;
+    }
+
+    @media all and (min-width: $ds-bp-xxl) {
+      display: none;
+    }
+  }
+
+  @media all and (min-width: $ds-bp-md) {
+    display: none;
+  }
+}
+
+/**
+* Menu button icon
+*/
+.ds-c-header__menu-button-icon {
+  position: relative;
+  inset-block-end: size(0.25);
+  display: block;
+  fill: currentColor;
+  margin-inline-start: size(2);
+}

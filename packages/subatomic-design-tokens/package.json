@@ -1,0 +1,20 @@
+{
+  "name": "@brad-frost-web/subatomic-design-tokens",
+  "version": "0.1.0",
+  "description": "Design tokens package used for Subatomic: A Complete Guide To Design Tokens course",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "build:tokens": "node config.js --verbose",
+    "build:tokens:vanilla": "npm run build:tokens -- --theme=vanilla",
+    "build:tokens:strawberry": "npm run build:tokens -- --theme=strawberry",
+    "build:tokens:chocolate": "npm run build:tokens -- --theme=chocolate",
+    "build:tokens:dark-chocolate": "npm run build:tokens -- --theme=dark-chocolate"
+  },
+  "devDependencies": {
+    "minimist": "^1.2.8",
+    "style-dictionary": "^4.3.3",
+    "vite": "^4.2.0",
+    "vite-plugin-static-copy": "^0.17.0"
+  }
+}

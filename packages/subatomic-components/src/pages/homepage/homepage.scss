@@ -1,0 +1,86 @@
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+
+/*------------------------------------*\
+# COURSE HOMEPAGE
+\*------------------------------------*/
+
+/**
+ * 1) Homepage demonstration of token application
+ */
+.course-homepage {
+  display: flex;
+  flex-direction: column;
+}
+
+/**
+ * Course homepage search
+ */
+.course-homepage__search {
+  display: none;
+
+  @media all and (min-width: $ds-bp-sm) {
+    display: block;
+  }
+}
+
+/**
+ * Main content
+ */
+main {
+  flex: 1;
+}
+
+/**
+ * Course homepage product grid
+ */
+.course-homepage-product-grid {
+  margin-block-end: size(4);
+
+  @media all and (min-width: $ds-bp-lg) {
+    margin-block-end: size(8);
+  }
+}
+
+/**
+ * Course homepage button wrapper
+ */
+.course-homepage__button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/**
+ * Product card wrapper
+ */
+.product-card-wrapper {
+  display: block;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(60px);
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--animation-delay, 0s);
+}
+
+/**
+ * Course homepage button wrapper
+ */
+.course-homepage__button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/**
+ * Fade in up animation
+ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

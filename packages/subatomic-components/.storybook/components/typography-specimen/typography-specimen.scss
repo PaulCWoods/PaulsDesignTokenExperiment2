@@ -1,0 +1,90 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/utilities/typography.scss' as *;
+
+/**
+ * Typography specimen component styles
+ */
+#typography-specimen {
+  margin-block-end: 0.5rem;
+}
+
+/**
+ * Typography specimen styles
+ */
+.typography-specimen {
+  margin-block-end: size(4);
+
+  @media all and (min-width: $ds-bp-md) {
+    display: flex;
+  }
+}
+
+/**
+ * Typography specimen header styles
+ */
+.typography-specimen__header {
+  @media all and (min-width: $ds-bp-md) {
+    width: 14rem;
+  }
+}
+
+/**
+ * Typography specimen title styles
+ */
+.typography-specimen__title {
+  @include ds-theme-typography-label-default;
+}
+
+/**
+ * Typography specimen description styles
+ */
+.typography-specimen__description {
+  margin: 0;
+  @include ds-theme-typography-body-sm;
+}
+
+/**
+ * Typography specimen input styles
+ */
+.typography-specimen__input {
+  background: var(--ds-theme-color-background-default);
+  color: var(--ds-theme-color-content-default);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  width: 100%;
+  border: none;
+  resize: none;
+  overflow: visible;
+}
+
+/**
+ * Typography specimen body styles
+ */
+.typography-specimen__body {
+  flex: 1;
+  margin-block-start: size(1);
+
+  @media all and (min-width: $ds-bp-md) {
+    margin-block-start: 0;
+    margin-inline-start: size(4);
+  }
+}
+
+/**
+ * Typography specimen code styles
+ */
+code {
+  display: inline-block;
+  font-size: 12px;
+  background: #f2f2f2;
+  color: #eb5757;
+  padding: 0.2rem;
+  border-radius: 4px;
+  width: 14rem;
+  overflow-x: auto;
+}

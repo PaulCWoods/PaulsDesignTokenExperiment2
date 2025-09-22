@@ -1,0 +1,74 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+
+/*------------------------------------*\
+  #BUTTON
+\*------------------------------------*/
+
+/**
+* 1) Call to action 
+*/
+.ds-c-button {
+  @include ds-theme-typography-label-default;
+  display: inline-flex;
+  justify-content: center;
+  gap: size(1);
+  padding: size(1) size(2);
+  background: var(--ds-theme-button-color-background-default);
+  color: var(--ds-theme-button-color-content-default);
+  text-align: center;
+  border: var(--ds-theme-border-width-sm) solid var(--ds-theme-button-color-border-default);
+  border-radius: var(--ds-theme-border-radius-sm);
+  cursor: pointer;
+  transition: background var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+
+  &:hover,
+  &:focus {
+    background: var(--ds-theme-button-color-background-hover);
+    color: var(--ds-theme-button-color-content-hover);
+    border-color: var(--ds-theme-button-color-border-hover);
+  }
+
+  &:active {
+    background: var(--ds-theme-button-color-background-active);
+    color: var(--ds-theme-button-color-content-active);
+    border-color: var(--ds-theme-button-color-border-active);
+  }
+
+  &:focus-visible {
+    @include focus();
+  }
+}
+
+/**
+* Primary button
+*/
+.ds-c-button--primary {
+  background: var(--ds-theme-button-primary-color-background-default);
+  color: var(--ds-theme-button-primary-color-content-default);
+  border-color: var(--ds-theme-button-primary-color-border-default);
+
+  &:hover,
+  &:focus {
+    background: var(--ds-theme-button-primary-color-background-hover);
+    color: var(--ds-theme-button-primary-color-content-hover);
+    border-color: var(--ds-theme-button-primary-color-border-hover);
+  }
+
+  &:active {
+    background: var(--ds-theme-button-primary-color-background-active);
+    color: var(--ds-theme-button-primary-color-content-active);
+    border-color: var(--ds-theme-button-primary-color-border-active);
+  }
+
+  &:focus-visible {
+    @include focus();
+  }
+}
+
+/**
+* Full width button
+*/
+.ds-c-button--full-width {
+  width: 100%;
+}

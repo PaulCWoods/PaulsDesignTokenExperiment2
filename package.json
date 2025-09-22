@@ -1,0 +1,30 @@
+{
+  "name": "@brad-frost-web/subatomic-design-tokens-course",
+  "version": "0.1.0",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "cd ./packages/subatomic-components && npm run storybook",
+    "plop": "cd ./packages/subatomic-components && npm run plop",
+    "sb:build": "cd ./packages/subatomic-components && npm run build-storybook",
+    "build:tokens": "cd ./packages/subatomic-design-tokens && npm run build:tokens",
+    "build:tokens:vanilla": "cd ./packages/subatomic-design-tokens && npm run build:tokens:vanilla",
+    "build:tokens:strawberry": "cd ./packages/subatomic-design-tokens && npm run build:tokens:strawberry",
+    "build:tokens:chocolate": "cd ./packages/subatomic-design-tokens && npm run build:tokens:chocolate",
+    "build:tokens:dark-chocolate": "cd ./packages/subatomic-design-tokens && npm run build:tokens:dark-chocolate",
+    "update:version:minor": "npm version minor && npm run update:version:minor:components && npm run update:version:minor:tokens",
+    "update:version:minor:components": "cd ./packages/subatomic-components && npm version minor",
+    "update:version:minor:tokens": "cd ./packages/subatomic-design-tokens && npm version minor",
+    "build": "cd ./packages/subatomic-design-tokens && npm run build",
+    "publish:tokens": "cd ./dist/subatomic-design-tokens && npm publish --access public"
+  },
+  "main": "index.js",
+  "description": "Subatomic: A Complete Guide to Design Tokens design token course demo repository",
+  "author": "Brad Frost and Ian Frost",
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11"
+  }
+}

@@ -1,0 +1,119 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+/*------------------------------------*\
+#SECTION
+\*------------------------------------*/
+
+/**
+* 1) Section HTML element that contains optional header and content
+*/
+.ds-c-section {
+  margin-block-end: size(4);
+
+  @media all and (min-width: $ds-bp-md) {
+    margin-block-end: size(8);
+  }
+
+  @media all and (min-width: $ds-bp-lg) {
+    margin-block-end: size(10);
+  }
+}
+
+/**
+* Small section
+*/
+.ds-c-section--sm {
+  margin-block-end: size(2);
+
+  @media all and (min-width: $ds-bp-md) {
+    margin-block-end: size(4);
+  }
+
+  @media all and (min-width: $ds-bp-lg) {
+    margin-block-end: size(4);
+  }
+}
+
+/**
+* Section header
+*/
+.ds-c-section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: size(3);
+
+  /**
+  * Section header within small section
+  */
+  .ds-c-section--sm & {
+    margin-block-end: size(3);
+
+    @media all and (min-width: $ds-bp-lg) {
+      margin-block-end: size(3);
+    }
+  }
+
+  /**
+  * Section header within center aligned section
+  */
+  .ds-c-section--align-center & {
+    justify-content: center;
+    text-align: center;
+  }
+
+  @media all and (min-width: $ds-bp-lg) {
+    margin-block-end: size(8);
+  }
+}
+
+/**
+* Section header content
+*/
+.ds-c-section__header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/**
+* Section heading
+*/
+.ds-c-section__heading {
+  @include ds-theme-typography-headline-lg;
+  & {
+    text-wrap: balance;
+    color: var(--ds-theme-color-content-brand);
+  }
+
+  /**
+  * Section heading within small section
+  */
+  .ds-c-section--sm & {
+    @include ds-theme-typography-title-default;
+    & {
+      color: var(--ds-theme-color-content-default);
+    }
+  }
+}
+
+/**
+* Section meta
+*/
+.ds-c-section__meta {
+  @include ds-theme-typography-label-sm;
+}
+
+/**
+* Section description
+*/
+.ds-c-section__description {
+  margin-block-start: 0;
+  color: var(--ds-theme-color-content-brand);
+
+  /**
+  * Section description within small section
+  */
+  .ds-c-section--sm & {
+    color: var(--ds-theme-color-content-default);
+  }
+}

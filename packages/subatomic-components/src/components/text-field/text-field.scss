@@ -1,0 +1,143 @@
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage' as *;
+
+/*------------------------------------*\
+#TEXT FIELD
+\*------------------------------------*/
+
+/**
+* 1) Field container that contains a label, text input, and field note
+*/
+.ds-c-text-field {
+  width: 100%;
+}
+
+/**
+* Text field label
+*/
+.ds-c-text-field__label {
+  @include ds-theme-typography-label-default;
+  & {
+    display: block;
+    margin-block-end: 0.5rem;
+    color: var(--ds-theme-color-content-default);
+  }
+
+  /**
+  * Text field label within hidden label text field
+  */
+  .ds-c-text-field--hide-label & {
+    @include visuallyHidden;
+  }
+
+  /**
+  * Text field label within inverted text field
+  */
+  .ds-c-text-field--inverted & {
+    color: var(--ds-theme-color-content-knockout);
+  }
+
+  /**
+  * Text field label within error text field
+  */
+  .ds-c-text-field.ds-is-error & {
+    color: var(--ds-theme-color-content-utility-error);
+  }
+}
+
+/**
+* Text field input
+*/
+.ds-c-text-field__input {
+  @include ds-theme-typography-body-default;
+  & {
+    padding: 0.5rem;
+    background: var(--ds-theme-form-color-background-default);
+    border-radius: var(--ds-theme-border-radius-sm);
+    border: var(--ds-theme-border-width-sm) solid var(--ds-theme-form-color-border-default);
+    color: var(--ds-theme-color-content-default);
+    width: 100%;
+    transition: all var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease-in-out);
+  }
+
+  &:hover {
+    background: var(--ds-theme-form-color-background-hover);
+    border-color: var(--ds-theme-form-color-border-hover);
+  }
+
+  &:focus {
+    background: var(--ds-theme-form-color-background-focus);
+    border-color: var(--ds-theme-form-color-border-focus);
+  }
+
+  &:focus-visible {
+    @include focus();
+  }
+
+  /**
+  * Text field input within inverted text field
+  */
+  .ds-c-text-field--inverted & {
+    &:focus-visible {
+      @include focusInverted();
+    }
+  }
+
+  /**
+  * Text field input within error text field
+  */
+  .ds-c-text-field.ds-is-error & {
+    border-color: var(--ds-theme-color-border-utility-error);
+  }
+
+  /**
+  * Text field input placeholder
+  */
+  &::placeholder {
+    color: var(--ds-theme-color-content-subtle);
+  }
+}
+
+/**
+* Text field optional text
+*/
+.ds-c-text-field__optional {
+  @include ds-theme-typography-body-default;
+  color: var(--ds-theme-color-content-subtle);
+}
+
+/**
+* Text field field note
+*/
+.ds-c-text-field__fieldnote {
+  @include ds-theme-typography-body-sm;
+  & {
+    display: flex;
+    gap: size(0.5);
+    margin-block-start: 0.5rem;
+    color: var(--ds-theme-color-content-subtle);
+  }
+
+  /**
+  * Text field field note within inverted text field
+  */
+  .ds-c-text-field--inverted & {
+    color: var(--ds-theme-color-content-knockout);
+  }
+
+  /**
+  * Text field field note within error text field
+  */
+  .ds-c-text-field.ds-is-error & {
+    color: var(--ds-theme-color-content-utility-error);
+  }
+}
+
+/**
+* Text field field note icon
+*/
+.ds-c-text-field__fieldnote-icon {
+  position: relative;
+  inset-block-start: size(0.25);
+  fill: currentColor;
+}

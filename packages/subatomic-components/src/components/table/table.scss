@@ -1,0 +1,57 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+/*------------------------------------*\
+#TABLE
+\*------------------------------------*/
+
+/**
+* 1) Table HTML element that contains table rows and cells
+*/
+.ds-c-table {
+  overflow: visible;
+  border-collapse: collapse;
+  border-radius: var(--ds-theme-border-radius-md);
+  width: 100%;
+}
+
+/**
+* Table row
+*/
+.ds-c-table__row {
+  background: var(--ds-theme-color-background-default);
+  border-block-end: var(--ds-theme-border-width-sm) solid var(--ds-theme-color-border-subtle);
+  transition: background var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+
+  &:hover {
+    background: var(--ds-theme-color-background-brand);
+  }
+
+  &:last-child {
+    border-block-end: none;
+  }
+}
+
+/**
+* Table header cell
+*/
+.ds-c-table__header-cell {
+  @include ds-theme-typography-label-sm;
+  & {
+    background: var(--ds-theme-color-background-brand-knockout);
+    color: var(--ds-theme-color-content-knockout);
+    background: var(--ds-theme-color-background-brand-knockout);
+    color: var(--ds-theme-color-content-knockout);
+    padding: size(1) size(1);
+    white-space: nowrap;
+  }
+}
+
+/**
+* Table cell
+*/
+.ds-c-table .ds-c-table__cell {
+  @include ds-theme-typography-body-sm;
+  & {
+    padding: size(0.5) size(1);
+  }
+}

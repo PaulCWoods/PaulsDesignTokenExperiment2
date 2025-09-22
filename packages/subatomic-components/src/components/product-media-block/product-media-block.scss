@@ -1,0 +1,88 @@
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+
+/*------------------------------------*\
+#PRODUCT-MEDIA-BLOCK
+\*------------------------------------*/
+
+/**
+* 1) Product media block that contains a media element and a heading and meta information
+*/
+.ds-c-product-media-block {
+  @include ds-theme-typography-body-default;
+
+  & {
+    display: flex;
+    gap: size(4);
+    width: 100%;
+  }
+}
+
+/**
+* Product media block left
+*/
+.ds-c-product-media-block__left {
+  display: flex;
+  gap: size(1);
+  flex: 1;
+}
+
+/**
+* Product media block media
+*/
+.ds-c-product-media-block__media {
+  width: size(9);
+  height: size(9);
+  border: var(--ds-theme-border-width-sm) solid var(--ds-theme-color-border-subtle);
+  border-radius: var(--ds-theme-border-radius-md);
+  background: var(--ds-theme-color-background-default);
+}
+
+/**
+* Product media block image
+*/
+.ds-c-product-media-block__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/**
+* Product media block heading and meta
+*/
+.ds-c-product-media-block__heading,
+.ds-c-product-media-block__meta {
+  display: block;
+}
+
+/**
+* Product media block heading
+*/
+.ds-c-product-media-block__heading {
+  font-weight: bold;
+  
+  /**
+  * Product media block heading within small product media block
+  */
+  .ds-c-product-media-block--sm & {
+    @include ds-theme-typography-body-sm;
+  }
+}
+
+/**
+* Product media block meta
+*/
+.ds-c-product-media-block__meta {
+  @include ds-theme-typography-body-sm;
+
+  & {
+    color: var(--ds-theme-color-content-default);
+  }
+}
+
+/**
+* Product media block price
+*/
+.ds-c-product-media-block__price {
+  @include ds-theme-typography-body-sm;
+}

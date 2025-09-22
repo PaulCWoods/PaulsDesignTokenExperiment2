@@ -1,0 +1,79 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+
+/*------------------------------------*\
+  #ALERT
+\*------------------------------------*/
+
+/**
+ * 1) Component that displays alert message
+ */
+.ds-c-alert {
+  display: flex;
+  gap: size(1);
+  background-color: var(--ds-theme-color-background-utility-info);
+  border: var(--ds-theme-border-width-sm) solid var(--ds-theme-color-border-utility-info);
+  border-radius: var(--ds-theme-border-radius-sm);
+  padding: size(1) size(2);
+
+  a {
+    color: inherit;
+    transition: color var(--ds-theme-fade-quick) var(--ds-theme-transition-ease);
+
+    &:hover {
+      text-decoration: none;
+      color: var(--ds-theme-color-content-subtle);
+    }
+  }
+}
+
+/**
+ * Error variant
+ */
+.ds-c-alert--error {
+  background-color: var(--ds-theme-color-background-utility-error);
+  border-color: var(--ds-theme-color-border-utility-error);
+}
+
+/**
+ * Warning variant
+ */
+.ds-c-alert--warning {
+  background-color: var(--ds-theme-color-background-utility-warning);
+}
+
+/**
+ * Success variant
+ */
+.ds-c-alert--success {
+  background-color: var(--ds-theme-color-background-utility-success);
+  border-color: var(--ds-theme-color-border-utility-success);
+}
+
+/**
+ * Alert icon
+ */
+.ds-c-alert__icon {
+  fill: var(--ds-theme-color-content-utility-info);
+
+  /**
+   * Alert icon within error variant
+   */
+  .ds-c-alert--error & {
+    fill: var(--ds-theme-color-content-utility-error);
+  }
+
+  /**
+   * Alert icon within warning variant
+   */
+  .ds-c-alert--warning & {
+    fill: var(--ds-theme-color-content-utility-warning);
+  }
+
+  /**
+   * Alert icon within success variant
+   */
+  .ds-c-alert--success & {
+    fill: var(--ds-theme-color-content-utility-success);
+  }
+}

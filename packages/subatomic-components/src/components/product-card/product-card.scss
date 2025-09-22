@@ -1,0 +1,106 @@
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables' as *;
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+
+/*------------------------------------*\
+#PRODUCT CARD
+\*------------------------------------*/
+
+/**
+* 1) Product card that contains an image and text content
+*/
+.ds-c-product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: var(--ds-theme-box-shadow-md);
+  background: var(--ds-theme-color-background-default);
+  border-radius: var(--ds-theme-border-radius-md);
+  transition: transform var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+
+  &:hover {
+    transform: scale(1.01);
+    @media all and (min-width: $ds-bp-lg) {
+      transform: scale(1.03);
+    }
+  }
+}
+
+/**
+* Product card body
+*/
+.ds-c-product-card__body {
+  position: relative;
+  border-start-start-radius: inherit;
+  border-start-end-radius: inherit;
+  flex: 1;
+  background: var(--ds-theme-color-background-default);
+
+  /**
+  * Product card body within subtle product card
+  */
+  .ds-c-product-card--subtle & {
+    background: var(--ds-theme-color-background-subtle);
+  }
+
+  /**
+  * Product card body within brand product card
+  */
+  .ds-c-product-card--brand & {
+    background: var(--ds-theme-color-background-brand);
+  }
+}
+
+/**
+* Product card footer
+*/
+.ds-c-product-card__footer {
+  padding: size(2);
+  text-align: center;
+}
+
+/**
+* Product card image
+*/
+.ds-c-product-card__image {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ds-theme-animation-ease);
+
+  /**
+  * Product card image on hover
+  */
+  .ds-c-product-card:hover & {
+    transform: scale(1.1);
+    @media all and (min-width: $ds-bp-lg) {
+      transform: scale(1.15);
+    }
+  }
+}
+
+/**
+* Product card heading
+*/
+.ds-c-product-card__heading {
+  @include ds-theme-typography-title-default;
+}
+
+/**
+* Product card badge
+*/
+.ds-c-badge {
+  @include ds-theme-typography-label-sm;
+
+  & {
+    position: absolute;
+    inset-inline-start: size(1);
+    inset-block-start: size(1);
+    background: var(--ds-theme-color-background-knockout);
+    color: var(--ds-theme-color-content-knockout);
+    padding: size(1) size(1.5);
+    text-align: center;
+    border-radius: var(--ds-theme-border-radius-lg);
+    box-shadow: var(--ds-theme-box-shadow-sm);
+    z-index: var(--ds-z-index-100);
+  }
+}

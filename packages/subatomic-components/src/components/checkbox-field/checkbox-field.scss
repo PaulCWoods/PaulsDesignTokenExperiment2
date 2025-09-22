@@ -1,0 +1,268 @@
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables.scss' as *;
+/*------------------------------------*\
+    #CHECKBOX-FIELD
+\*------------------------------------*/
+
+/**
+ * 1) A form fied consisting of a label, select input, and field note
+ */
+.ds-c-checkbox-field {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: size(1);
+}
+
+/**
+* Select field label
+*/
+.ds-c-checkbox-field__label {
+  @include ds-theme-typography-label-default;
+  /**
+  * Select field label within error select field
+  */
+  .ds-c-checkbox-field.ds-is-error & {
+    color: var(--ds-theme-color-content-utility-error);
+  }
+
+  /**
+  * Select field label within success select field
+  */
+  .ds-c-checkbox-field.ds-is-success & {
+    color: var(--ds-theme-color-content-utility-success);
+  }
+
+  .ds-c-checkbox-field--hide-label & {
+    @include visuallyHidden;
+  }
+}
+
+/**
+* Select field list
+*/
+.ds-c-checkbox-field__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: size(1);
+}
+
+/**
+* Select field body
+* 1) Container around the input and icon to help place icon in the right spot
+*/
+.ds-c-checkbox-field__body {
+  position: relative;
+}
+
+/**
+* Select field item
+*/
+.ds-c-checkbox-field__item {
+  display: flex;
+  gap: size(1);
+  position: relative;
+  padding: 0;
+}
+
+/**
+ * Inline checkbox wrapping label
+ */
+.ds-c-checkbox-field-item__label {
+  @include ds-theme-typography-body-sm;
+  position: relative;
+  flex: 1;
+}
+
+/**
+   * Checkbox control input
+   * 1) Make control dimensions same as outer container
+   * 2) Hide native form controls
+   */
+.ds-c-checkbox__input {
+  display: block;
+  margin: 0;
+  z-index: 4;
+  width: size(2.25); /* 1 */
+  height: size(2.25); /* 1 */
+  cursor: pointer;
+  opacity: 0; /* 2 */
+
+  /**
+  * Disabled checkbox input
+  */
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+/**
+* Custom checkbox
+* 1) Make control dimensions same as outer container
+*/
+.ds-c-checkbox__custom-check {
+  position: absolute;
+  inset-block-start: 0; /* 1 */
+  inset-inline-end: 0; /* 1 */
+  inset-block-end: 0; /* 1 */
+  inset-inline-start: 0; /* 1 */
+  width: size(2.25);
+  height: size(2.25);
+  flex-shrink: 0;
+  z-index: 1;
+
+  /**
+  * Custom checkbox background
+  * 1) Make control dimensions same as outer container
+  * 2) Stack background behind checkbox foreground
+  */
+  &:before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0; /* 1 */
+    inset-inline-end: 0; /* 1 */
+    inset-block-end: 0; /* 1 */
+    inset-inline-start: 0; /* 1 */
+    z-index: 1; /* 2 */
+    display: block;
+    border: var(--ds-theme-border-width-sm) solid var(--ds-theme-form-color-border-default);
+    background-color: var(--ds-theme-color-background-default);
+    border-radius: var(--ds-theme-border-radius-sm);
+    transition: all var(--ds-theme-animation-fade-quick) var(--ds-theme-animation-ease);
+
+    /**
+    * Custom checkbox background inside of hovered control
+    */
+    .ds-c-checkbox__input:hover + & {
+      border-color: var(--ds-theme-form-color-border-default-hover);
+    }
+
+    /**
+    * Custom checkbox background inside of disabled control
+    */
+    .ds-c-checkbox__input:disabled + & {
+      border-color: var(--ds-theme-color-border-subtle);
+      background-color: var(--ds-theme-color-background-subtle);
+      cursor: not-allowed;
+    }
+
+    /**
+    * Custom checkbox background inside of checked control
+    */
+    .ds-c-checkbox__input:checked + & {
+      background-color: var(--ds-theme-color-background-brand-knockout);
+      
+    }
+
+    /**
+    * Custom checkbox background inside of checked and hovered control
+    */
+    .ds-c-checkbox__input:checked:hover + & {
+      background-color: var(--ds-theme-color-background-brand-hover);
+      
+    }
+
+    /**
+    * Custom checkbox background inside of checked control
+    */
+    .ds-c-checkbox__input:checked:disabled + & {
+      background-color: var(--ds-theme-color-background-brand-disabled);
+      
+    }
+
+    .ds-c-checkbox__input:focus-visible + & {
+      @include focus;
+    }
+  }
+
+  /**
+  * Custom checkbox checkmark
+  * 1) Position checkmark in center of box
+  * 2) Hide checkmark based by default
+  */
+  .ds-c-checkbox-field__icon {
+    fill: var(--ds-theme-color-content-knockout);
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    transform: translate(-50%, -50%);
+    height: size(1.25);
+    width: size(1.25);
+    display: block;
+    background-repeat: no-repeat;
+    opacity: 0; /* 2 */
+    z-index: 2;
+
+    /**
+    * Actual checkbox of the checked input
+    * 1) Hide checkmark based on if input is checked
+    */
+    .ds-c-checkbox__input:checked + & {
+      opacity: 1; /* 1 */
+    }
+  }
+}
+
+/**
+* Apply "indeterminate" style to checkbox. "Indeterminate" states are for
+* checkboxes masked states of the checkbox. More here - https://css-tricks.com/indeterminate-checkboxes/
+*/
+.ds-is-indeterminate .ds-c-checkbox__input:not(:checked) {
+  &:hover + .ds-c-checkbox__custom-check::before {
+    background-color: var(--ds-theme-color-background-brand-hover);
+    border-color: transparent;
+  }
+
+  /**
+  * Apply disabled "indeterminate" styles to checkbox
+  */
+  &:disabled + .ds-c-checkbox__custom-check::before {
+    background-color: var(--ds-theme-color-background-brand-disabled);
+    border-color: transparent;
+  }
+
+  /**
+  * Apply "indeterminate" styles to checkbox
+  */
+  + .ds-c-checkbox__custom-check {
+    &::before {
+      background-color: var(--ds-theme-color-background-brand);
+      border-color: transparent;
+    }
+
+    /**
+    * "Indeterminate" state SVG style (just a - instead of a ✓)
+    */
+    &::after {
+      opacity: 1;
+      width: 10px;
+      height: 4px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 1.52'%3E%3Cpath d='M9.24,1.52H.76A.76.76,0,0,1,.76,0H9.24a.76.76,0,0,1,0,1.52Z' fill='%23ffffff'/%3E%3C/svg%3E");
+    }
+  }
+}
+
+/**
+* Remove native select icon
+*/
+select::-ms-expand {
+  display: none;
+}
+
+/**
+* Select input icon (custom)
+* 1) Place icon in the middle of the select input
+* 2) Remove icon pointer event from blocking the menu from opening
+*/
+.ds-c-checkbox-field__icon {
+  position: absolute; /* 1 */
+  inset-block-start: 50%; /* 1 */
+  transform: translateY(-50%); /* 1 */
+  inset-inline-end: size(1.5);
+  pointer-events: none;
+}

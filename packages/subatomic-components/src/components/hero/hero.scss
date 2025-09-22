@@ -1,0 +1,147 @@
+@use '../../../../subatomic-design-tokens/core/scss/abstracts/variables' as *;
+@use '../../../../subatomic-design-tokens/core/scss/typography-usage.scss' as *;
+
+/*------------------------------------*\
+#HERO
+\*------------------------------------*/
+
+/**
+* 1) Splashy hero container that includes a background image and a body for copy
+*/
+.ds-c-hero {
+  position: relative;
+  padding: 0;
+  height: 25rem;
+  background: var(--ds-theme-color-background-brand);
+  overflow: hidden;
+
+  /**
+  * Hero before pseudo element for bottom wavy border
+  */
+  &::before {
+    content: '';
+    position: absolute;
+    inset-block-end: size(1);
+    inset-inline-start: 0;
+    width: 100%;
+    height: size(5.5);
+    background: var(--ds-theme-color-background-brand-knockout);
+    clip-path: path(
+      'M0,36 C150,36 150,0 300,0 C450,0 450,36 600,36 C750,36 750,0 900,0 C1050,0 1050,36 1200,36 C1350,36 1350,0 1500,0 C1650,0 1650,36 1800,36 C1950,36 1950,0 2100,0 C2250,0 2250,36 2400,36 L2400,48 L0,48 Z'
+    );
+    z-index: 2;
+  }
+
+  /**
+  * Hero after pseudo element to help with clipping
+  */
+  &::after {
+    content: '';
+    position: absolute;
+    inset-block-end: -2px;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 3rem;
+    background: var(--ds-theme-color-background-default);
+    clip-path: path(
+      'M0,36 C150,36 150,0 300,0 C450,0 450,36 600,36 C750,36 750,0 900,0 C1050,0 1050,36 1200,36 C1350,36 1350,0 1500,0 C1650,0 1650,36 1800,36 C1950,36 1950,0 2100,0 C2250,0 2250,36 2400,36 L2400,48 L0,48 Z'
+    );
+    z-index: 2;
+  }
+
+  @media all and (min-width: $ds-bp-md) {
+    height: 35rem;
+  }
+
+  @media all and (min-width: $ds-bp-lg) {
+    height: 38rem;
+  }
+}
+
+/**
+* Hero image
+*/
+.ds-c-hero__image {
+  position: absolute;
+  inset-block-start: 0;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  mix-blend-mode: multiply;
+  transform-origin: center;
+  animation: scale-image 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/**
+* Hero body
+*/
+.ds-c-hero__body {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 0;
+  transform: translateY(-50%);
+  padding: size(4) 0;
+  width: 100%;
+}
+
+/**
+* Hero body inner container
+*/
+.ds-c-hero__body-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+/**
+* Hero heading
+*/
+.ds-c-hero__heading {
+  @include ds-theme-typography-display-default;
+
+  & {
+    text-wrap: balance;
+    color: var(--ds-theme-color-content-brand);
+  }
+
+  @media all and (min-width: $ds-bp-md) {
+    max-width: 60vw;
+  }
+}
+
+/**
+* Hero description
+*/
+.ds-c-hero__description {
+  @include ds-theme-typography-body-default;
+  & {
+    max-width: 35rem;
+    color: var(--ds-theme-color-content-default);
+  }
+}
+
+/**
+* Hero logo
+*/
+.ds-c-hero__logo {
+  display: block;
+  fill: var(--ds-theme-color-content-brand);
+  width: 100%;
+  margin: 0 auto;
+}
+
+@keyframes scale-image {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
