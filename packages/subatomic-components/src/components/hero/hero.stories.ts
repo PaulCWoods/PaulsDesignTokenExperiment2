@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import heroImg from '../../assets/ice-cream.png';
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 
 const meta = {
   title: 'Components/Hero',

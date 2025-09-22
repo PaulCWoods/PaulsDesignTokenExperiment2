@@ -1,12 +1,31 @@
 import { html } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import './header';
 
 const meta = {
   title: 'Components/Header',
   tags: ['autodocs'],
-  render: () => html`<ds-header></ds-header>`,
-  component: 'ds-header'
+  render: (args) => html`<ds-header 
+    .variant=${args.variant}
+    .size=${args.size}
+    ?isMenuOnly=${args.isMenuOnly}
+    ?isSimple=${args.isSimple}
+    ?inverted=${args.inverted}
+  ></ds-header>`,
+  component: 'ds-header',
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: [undefined, 'transparent']
+    },
+    size: {
+      control: 'select', 
+      options: [undefined, 'wide', 'extra-wide']
+    },
+    isMenuOnly: { control: 'boolean' },
+    isSimple: { control: 'boolean' },
+    inverted: { control: 'boolean' }
+  }
 } satisfies Meta;
 export default meta;
 type Story = StoryObj;

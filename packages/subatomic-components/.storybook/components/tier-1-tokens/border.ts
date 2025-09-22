@@ -4,16 +4,34 @@ import { customElement, state } from 'lit/decorators.js';
 import '../token-specimen/token-specimen';
 import styles from './tier-1-tokens.scss?inline';
 
+interface TokenObject {
+  name: string;
+  value: string;
+  comment: string;
+}
+
+declare global {
+  interface Window {
+    themeTokens: string;
+  }
+}
+
 @customElement('tier-1-border')
 export class Tier1Border extends LitElement {
   static get styles() {
     return unsafeCSS(styles);
   }
+  
+  static get properties() {
+    return {
+      tokens: { state: true }
+    };
+  }
 
   /**
    * Tokens state that loads in JSON parsed theme file
    */
-  @state() tokens: any;
+  tokens?: Record<string, any>;
 
   /**
    * 1) Add DOM Content Loaded event to run when the theme switches
@@ -23,20 +41,20 @@ export class Tier1Border extends LitElement {
     super.connectedCallback();
     globalThis.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
-        this.tokens = JSON.parse(window['themeTokens']) ?? {};
+        this.tokens = JSON.parse(window.themeTokens) ?? {};
       }, 1);
     });
   }
 
-  filterTokens(prefix) {
+  filterTokens(prefix: string): TokenObject[] {
     if (!this.tokens) return [];
 
     const filtered = Object.entries(this.tokens)
       .filter(([name]) => name.startsWith(prefix))
-      .map(([name, value]) => {
+      .map(([name, value]: [string, any]): TokenObject => {
         return {
           name: `--${name}`,
-          value: value,
+          value: value as string,
           comment: ''
         };
       });
@@ -81,10 +99,10 @@ export class Tier1Border extends LitElement {
                     name="${item.name}"
                     value="${item.value}"
                     inlineStyles="
-                      background-color: 'transparent';
-                      border-width: '2px';
-                      border-style: 'solid';
-                      border-color: 'black';
+                      background-color: transparent;
+                      border-width: 2px;
+                      border-style: solid;
+                      border-color: black;
                       border-radius: var(${item.name});"
                   ></token-specimen>
                 </li>

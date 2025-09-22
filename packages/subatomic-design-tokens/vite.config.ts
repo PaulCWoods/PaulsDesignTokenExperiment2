@@ -1,16 +1,20 @@
 import { defineConfig } from 'vite';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { name, version } from './package.json';
 import fg from 'fast-glob';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import fs from 'fs';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const filesDir = fs.readdirSync('./');
 
 // the json result that will be generated
-let themeFiles = [];
+let themeFiles: string[] = [];
 
-filesDir.forEach((file) => {
+filesDir.forEach((file: string) => {
   console.log(file);
   if (fs.lstatSync(file).isDirectory()) {
     let fileContents = fg.globSync(`${file}/**`, {
@@ -23,10 +27,9 @@ filesDir.forEach((file) => {
       ]
     });
     fileContents = fileContents;
-    themeFiles.push(fileContents);
+    themeFiles.push(...fileContents);
   }
 });
-themeFiles = themeFiles.flat(1);
 
 export default defineConfig({
   build: {
@@ -38,7 +41,7 @@ export default defineConfig({
       formats: ['es']
     },
     rollupOptions: {
-      input: fg.sync(['./index.ts']).map((file) => path.resolve(__dirname, file)),
+      input: fg.sync(['./index.ts']).map((file: string) => path.resolve(__dirname, file)),
       external: [/node_modules/, /\.(json|css|scss|sass|less|styl|png|jpe?g|gif|svg|ico|webp)$/]
     }
   },

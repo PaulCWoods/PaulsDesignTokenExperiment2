@@ -144,7 +144,7 @@
   --ds-shadow-sm-y: 0.25rem;
   --ds-shadow-sm-blur: 0.25rem;
   --ds-shadow-sm-spread: 0rem;
-  --ds-shadow-sm-color: #00000040;
+  --ds-shadow-sm-color: #0000000f;
   --ds-shadow-md-x: 0rem;
   --ds-shadow-md-y: 0.5rem;
   --ds-shadow-md-blur: 0.375rem;
@@ -319,7 +319,7 @@
   --ds-theme-typography-meta-sm-line-height: 1.33;
   --ds-theme-typography-meta-sm-letter-spacing: 0.125rem;
   --ds-theme-typography-meta-sm-text-transform: uppercase;
-  --ds-theme-box-shadow-sm: 0rem 0.25rem 0.25rem 0rem #00000040;
+  --ds-theme-box-shadow-sm: 0rem 0.25rem 0.25rem 0rem #0000000f;
   --ds-theme-box-shadow-md: 0rem 0.5rem 0.375rem -0.375rem #0000001a;
   --ds-theme-button-color-background-default: #ffffff;
   --ds-theme-button-color-background-hover: #ffffff;

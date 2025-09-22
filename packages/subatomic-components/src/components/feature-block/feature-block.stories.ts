@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import bootsyImg from '../../assets/bootsy-frostd-dawgs.jpg';
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 
 const meta = {
   title: 'Components/Feature Block',

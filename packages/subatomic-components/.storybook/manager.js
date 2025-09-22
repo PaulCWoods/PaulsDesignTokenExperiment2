@@ -1,4 +1,4 @@
-import { addons } from '@storybook/manager-api';
+import { addons } from 'storybook/manager-api';
 import frostedTokens from './FrostedTokens';
 import favicon from '../favicon.svg';
 

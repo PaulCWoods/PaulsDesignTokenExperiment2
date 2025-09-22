@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/web-components';
+import type { Preview } from '@storybook/web-components-vite';
 import { withThemeByClassName } from '@storybook/addon-themes';
 import vanillaTokens from '../../subatomic-design-tokens/vanilla/build/json/tokens.json?raw';
 import strawberryTokens from '../../subatomic-design-tokens/strawberry/build/json/tokens.json?raw';

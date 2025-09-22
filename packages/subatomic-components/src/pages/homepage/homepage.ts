@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { property, state } from 'lit/decorators.js';
+import { state } from 'lit/decorators.js';
 import heroImg from '../../assets/bg-ice-cream-texture.jpg';
 import mokaModeImg from '../../assets/moka-mode.png';
 import strawberryImg from '../../assets/strawberry.png';
@@ -31,7 +31,7 @@ export class Homepage extends LitElement {
     super.connectedCallback();
     globalThis.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
-        this.themeName = window.themeName;
+        this.themeName = (window as any).themeName;
       }, 1);
     });
   }
